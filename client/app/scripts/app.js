@@ -13,24 +13,31 @@ angular
   
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
+    
     $urlRouterProvider.otherwise("/");
     $stateProvider
       .state('master', {
-        url: "/",
+        url: '/',
         templateUrl: 'views/master-view.html',
         controller: 'MasterCtrl',
         controllerAs: 'master'
       })
       .state('about', {
-        url: "/about",
+        url: '/about',
         templateUrl: 'views/about-view.html',
         controller: 'AboutCtrl',
         controllerAs: 'vm'
       })
       .state('contact', {
-        url: "/contact",
+        url: '/contact',
         templateUrl: 'views/contact-view.html',
         controller: 'ContactCtrl',
+        controllerAs: 'vm'
+      })
+      .state('signup', {
+        url: '/signup',
+        templateUrl: 'views/signup-view.html',
+        controller: 'SignupCtrl',
         controllerAs: 'vm'
       });
   });

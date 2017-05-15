@@ -6,8 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
+/**
+ * Route Imports
+ **/
 var index = require('./routes/index');
 var users = require('./routes/users');
+var signup = require('./routes/signup');
 
 var app = express();
 
@@ -60,5 +64,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+/**
+ * Routes
+ **/
+app.use('/signup', signup);
 
 module.exports = app;
