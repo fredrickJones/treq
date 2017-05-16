@@ -9,9 +9,9 @@ var cors = require('cors');
 /**
  * Route Imports
  **/
-var index = require('./routes/index');
-var users = require('./routes/users');
-var signup = require('./routes/signup');
+// var index = require('./routes/index');
+// var users = require('./routes/users');
+//var signup = require('./routes/signup');
 
 var app = express();
 
@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/', index);
-app.use('/api/users', users);
+// app.use('/api/users', users);
 
 // In production, we'll actually serve our angular app from express
 if (app.get('env') === 'production') {
@@ -54,6 +54,11 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+/**
+ * Routes
+ */
+var router = require('./router')(app);
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -68,6 +73,6 @@ app.use(function(err, req, res, next) {
 /**
  * Routes
  **/
-app.use('/signup', signup);
+//app.use('/signup', signup);
 
 module.exports = app;
