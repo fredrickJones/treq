@@ -9,7 +9,7 @@
  */
 
 angular.module('treq').controller('SignupCtrl', ['$scope', '$http',
- function ($scope, $http) {
+function ($scope, $http) {
     var vm = this;
 
     //////VARIABLES
@@ -45,14 +45,18 @@ angular.module('treq').controller('SignupCtrl', ['$scope', '$http',
 
       // Make the request to the server ... which doesn't exist just yet
       // MOVE THIS TO A SERVICE LATER
-      $http.post('/signup', vm.user).then(function successCB(response){
+      var request = $http.post('/signup', vm.user);
+
+      request.success(function (data) {
         // our json response is recognized as
         // the data parameter here. See? Our msg
         // value is right there!
-        console.log(response.msg);
-      }, function errorCB(response){
+        console.log(data); // <-- changed
+      });
+
+      request.error(function (data) {
         // to be filled in on error
-        console.log(response.msg);
+        console.log(data); // <-- changed
       });
     }
-  }]);
+}]);
