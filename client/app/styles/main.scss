@@ -34,6 +34,17 @@ body {
     line-height: 40px;
     padding-bottom: 19px;
   }
+
+  .navbar {
+    margin-bottom: 0 !important;
+  }
+
+  .container {
+    margin: 15px auto !important;
+    .nav > li.adventures {
+      margin-right: 10px;
+    }
+  }
 }
 
 /* Custom page footer */
@@ -49,14 +60,23 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
+  width: 100% !important;
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  padding: 0 !important;
 
   .btn {
     font-size: 21px;
     padding: 14px 24px;
   }
+  
+  .angular-google-map-container {
+    height: 410px;
+    width: 100%;
+    border-radius: 6px;
+  }
 }
+
 
 /* Supporting marketing content */
 .marketing {
@@ -70,7 +90,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 850px;
   }
 
   /* Remove the padding we set earlier */

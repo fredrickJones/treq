@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * @ngdoc function
  * @name treq.controller:SignupCtrl
@@ -31,17 +30,17 @@ function ($scope, $http) {
       // $scope.signup.user.firstname everytime now??
       if (!vm.user.firstname || !vm.user.lastname || !vm.user.email || !vm.user.password1 || !vm.user.password2) {
         alert('Please fill out all form fields.');
-        return false;
+        // return false;
       }
       // make sure the passwords match match
       if (vm.user.password1 !== vm.user.password2) {
         alert('Your passwords must match.');
-        return false;
+        // return false;
       }
 
       // Just so we can confirm that the bindings are working
-      console.log('THE USER')
-      console.log(vm.user);
+      // console.log('THE USER')
+      // console.log(vm.user);
 
       // Make the request to the server ... which doesn't exist just yet
       // MOVE THIS TO A SERVICE LATER
@@ -51,12 +50,12 @@ function ($scope, $http) {
         // our json response is recognized as
         // the data parameter here. See? Our msg
         // value is right there!
-        console.log(data); // <-- changed
+        // console.log(data); // <-- changed
       });
 
       request.error(function (data) {
         // to be filled in on error
-        console.log(data); // <-- changed
+        // console.log(data); // <-- changed
       });
     }
 }]);

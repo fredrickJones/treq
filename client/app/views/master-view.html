@@ -1,17 +1,35 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <h2>{{ master.tagline }}</h2>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p>
-    <a ui-sref="signup" class="btn btn-lg btn-success">Signup <i class="fa fa-chevron-circle-right"></i></a>
-  </p>
-  <p>
-    <a class="btn btn-lg btn-success" ui-sref="master">Splendid! <i class="fa fa-ok"></i></a></p>
-</div>
-<div class="row users">
+<div>
+  <!--<div class="navbar navbar-inverse" role="navigation">-->
+  <div class="header">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li class="adventures"><i class="fa fa-check-square"></i> Rock Climbing</li>
+        <li class="adventures"><i class="fa fa-square-o"></i> Fishing</li>
+        <li class="adventures"><i class="fa fa-check-square"></i> Hiking</li>
+      </ul>
+    </div>
+  </div>
+  <!--</div>-->
+  <div class="jumbotron">
+    <ui-gmap-google-map ng-if="master.isMap" center="master.map.center" zoom="master.map.zoom">
+      <ui-gmap-marker idKey="master.userMarker.id" coords="master.userMarker.coords" options="master.userMarker.options">
+      </ui-gmap-marker>
+    </ui-gmap-google-map>
+    <div ng-if="!master.isMap">
+    <h1>'Allo, 'Allo!</h1>
+    <h2>{{ master.tagline }}</h2>
+    <p class="lead">
+      <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+      Always a pleasure scaffolding your apps.
+    </p>
+    <p>
+      <a ui-sref="signup" class="btn btn-lg btn-success">Signup <i class="fa fa-chevron-circle-right"></i></a>
+    </p>
+    <p>
+      <a class="btn btn-lg btn-success" ui-sref="master">Splendid! <i class="fa fa-ok"></i></a></p>
+    </div>
+  </div>
+<!--<div class="row users">
   <ul>
     <li ng-repeat="user in master.awesomeUsers track by user._id">{{user.email}}</li>
   </ul>
@@ -28,5 +46,5 @@
   </p>
 
   <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  <p>Spectacular Test Runner for JavaScript.</p>-->
 </div>
