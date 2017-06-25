@@ -17,14 +17,14 @@ angular.module('treq').controller('MasterCtrl', ['$http', '$localStorage', 'uiGm
     master.isMap = true;
     master.isLoading = true;
     master.map = {
-      center: UserPosition.coords,
+      center: master.location || UserPosition.coords,
       zoom: 12,
       options: {
         scrollwheel: false,
         // mapTypeControlOptions: {
         //   mapTypeIds: [google.maps.MapTypeId.TERRAIN]
         // },
-        //disableDefaultUI: true,
+        disableDefaultUI: true,
         // mapTypeId: google.maps.MapTypeId.TERRAIN,
         zoomControl: true,
         zoomControlOptions: {
@@ -32,25 +32,29 @@ angular.module('treq').controller('MasterCtrl', ['$http', '$localStorage', 'uiGm
         }
       }
     };
-    console.log('MAP')
-    console.log(master.map)
+    console.log('MAP');
+    console.log(master.map);
     master.userMarker = {
       id: "user",
       coords: UserPosition.coords,
       options: {
-        icon: '../images/yeoman.png'//'user-marker.png'
+        icon: '../images/markers/user.svg'//yeoman.png'//'user-marker.png'
       }
     };
-    
+
     //////METHODS
+    master.setLocation = setLocation;
 
     //////INIT
     function init() {
       // var location = {};
       if (navigator.geolocation) {
-        console.log('User Position')
-        console.log(UserPosition)
+        console.log('User Position');
+        console.log(UserPosition);
         uiGmapGoogleMapApi.then(function (mapData) {
+          console.log('MAP DATA');
+          console.log(mapData);
+          master.map.options.mapTypeId = mapData.mapTypeId.TERRAIN;
           master.isLoading = false;
         });
       } else {
@@ -64,18 +68,9 @@ angular.module('treq').controller('MasterCtrl', ['$http', '$localStorage', 'uiGm
       // }
     }
     init();
-    //////IMPLEMENTATION
-    var req = $http.get('api/users');
 
-    req.then(function(res){
-      master.awesomeUsers = res.data.users;
-    });
-    req.catch(function(err){
-      // console.log(err);
-    });
-    master.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    //////IMPLEMENTATION
+    function setLocation(info) {
+      console.log(info);
+    }
 }]);

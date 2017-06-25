@@ -2,13 +2,75 @@
 
 /**
  * @ngdoc function
- * @name treq.service:User
+ * @name treq.service:Adventure
  * @description
- * # User
+ * # Adventure
  * Service of treq
  */
-angular.module('treq').factory('User', ['$location', '$http', '$q', '$state',
-	function User($location, $http, $q, $state) {
+angular.module('treq').factory('Adventure', ['$location', '$http', '$q', '$state', 'User',
+	function Adventure($location, $http, $q, $state, User) {
+
+		function getNear() {
+			var treqs = [];
+			var all = $q.all([rock, camp]);
+			User.getUserPosition().then(function(coords) {
+				console.log('GET THE TREQS')
+				console.log(coords);
+				$http.get('api/users');
+				$http.get('api/rockClimb?lon=' + coords.lon + '&lat=' + coords.lat)
+			});
+
+			// navigator.geolocation.watchPosition(function (position) {
+			// 	deferred.resolve(position);
+			// }, function (err) {
+			// 	deferred.reject(err);
+			// }, {
+			// 	enableHighAccuracy: true
+			// });
+			// return deferred.promise;
+		}
+		// this.getNear = function () {
+		// 	var currentMarkers = [];
+		// 	var deferred = $q.defer();
+		// 	locationService.getCoords().then(function (coords) {
+		// 		// console.log(coords);
+		// 		$http.get('api/rockClimb?lon=' + coords.lon + '&lat=' + coords.lat).then(function (resp) {
+		// 			// console.log(resp);
+		// 			currentMarkers = [];
+		// 			var markerData = resp.data;
+		// 			function NewMarker(name, lat, lon, difficult, trailHead, id, url) {
+		// 				this.name = name;
+		// 				this.id = id;
+		// 				this.coords = {
+		// 					latitude: lat,
+		// 					longitude: lon
+		// 				};
+		// 				this.difficult = difficult;
+		// 				this.trailHead = trailHead;
+		// 				this.url = url;
+		// 			};
+		// 			var url = 'images/location-marker.png';
+		// 			for (var i = 0; i < markerData.length; i++) {
+		// 				var cragMarker = new NewMarker(
+		// 					markerData[i].name,
+		// 					markerData[i].loc[1],
+		// 					markerData[i].loc[0],
+		// 					markerData[i].difficult,
+		// 					markerData[i].trailHead,
+		// 					i,
+		// 					url
+		// 				);
+		// 				currentMarkers.push(cragMarker);
+		// 			};
+		// 			// console.log(currentMarkers);
+		// 			deferred.resolve(currentMarkers);
+		// 		}).catch(function (err) {
+		// 			deferred.reject(err);
+		// 		});
+		// 	});
+		// 	return deferred.promise;
+		// };
+		
 		function save(x) {
 			// var isNew = !x.ID;
 			return $http.post('/ajax/axomo-item.aspx?data=saveItem', x).then(function (response) {
@@ -47,17 +109,6 @@ angular.module('treq').factory('User', ['$location', '$http', '$q', '$state',
 			});
 		}
 
-		function getUserPosition() {
-			var deferred = $q.defer();
-			navigator.geolocation.watchPosition(function (position) {
-				deferred.resolve(position);
-			}, function (err) {
-				deferred.reject(err);
-			}, {
-				enableHighAccuracy: true
-			});
-			return deferred.promise;
-		}
 		function getUserByID() {
 			var req = $http.get('api/users');
 
@@ -100,8 +151,8 @@ angular.module('treq').factory('User', ['$location', '$http', '$q', '$state',
 			save: save,
 			getByID: getByID,
 			deleteUser: deleteUser,
-			getUserPosition: getUserPosition,
-			// getAllUsers: getAllUsers,
+			getNear: getNear,
+			getUserByID: getUserByID,
 			USER_STATUS: USER_STATUS,
 			STATUS: STATUS
 		};

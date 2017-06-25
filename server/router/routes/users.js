@@ -5,9 +5,9 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.json({
     users: [
-      { _id: 1, email: 'test.a@angular.com' },
-      { _id: 2, email: 'test.b@grunt.com' },
-      { _id: 3, email: 'test.b@express.com' }
+      { ID: 1, email: 'test.a@angular.com' },
+      { ID: 2, email: 'test.b@grunt.com' },
+      { ID: 3, email: 'test.b@express.com' }
     ]
   });
 });

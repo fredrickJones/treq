@@ -16,7 +16,7 @@ var adventureSchema = new Schema({
 	Icon: { type: String, required: true },
 	Price: { type: Number, required: true },
 	DateCreated: { type: Date },
-	Details: {} // for extra information you may / may not want
+	Details: {} // for extra information you may or may not want
 });
 
 // A method that's called every time a adventure document is saved..

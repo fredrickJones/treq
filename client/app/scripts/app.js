@@ -30,10 +30,10 @@ function ($stateProvider, $urlRouterProvider, $locationProvider) {
         //   deferred.resolve(coords);
         // })
         // return deferred.promise;
-      }//,
-      // AllAdventres: function (rockService) {  /*--- THIS WILL LOAD ALL TREQs ---*/
-      //   return rockService.getNear();
-      // }
+      },
+      AllAdventres: function (Adventure) {  /*--- THIS WILL LOAD ALL TREQs ---*/
+        return Adventure.getNear();
+      }
     }
   })
   .state('about', {

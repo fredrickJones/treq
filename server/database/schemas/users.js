@@ -17,12 +17,11 @@ var userSchema = new Schema({
 	GoogleID: { type: String },
 	Adventures: { type: Array },
 	DateCreated: { type: Date },
-	Profile: {} // for extra information you may / may not want
+	Profile: {} // for extra information you may or may not want
 });
 
 // A method that's called every time a user document is saved..
 userSchema.pre('save', function (next) {
-
 	var user = this;
 
 	// If the password hasn't been modified, move along...
@@ -32,7 +31,6 @@ userSchema.pre('save', function (next) {
 
 	// generate salt
 	bcrypt.genSalt(10, function (err, salt) {
-
 		if (err) {
 			return next(err);
 		}

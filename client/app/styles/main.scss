@@ -15,7 +15,6 @@ body {
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
 .marketing,
 .footer {
   padding-left: 15px;
@@ -24,8 +23,9 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 5px;
 
   /* Make the masthead heading the same height as the navigation */
   h3 {
@@ -37,6 +37,9 @@ body {
 
   .navbar {
     margin-bottom: 0 !important;
+  }
+  .navbar-brand > img {
+    height: 100%;
   }
 
   .container {
@@ -102,7 +105,7 @@ body {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+    margin-bottom: 5px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
